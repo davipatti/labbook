@@ -1,14 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{{ SITENAME }}{% endblock %}
 {% block content %}
-<div class="container">
-  <p>Lab book for David J. Pattinson<br><a href="mailto:david.pattinson@wisc.edu">david.pattinson@wisc.edu</a></p>
-  <address>
-    Influenza Research Institute<br>
-    575 Science Dr.<br>
-    Madison, WI<br>
-  </address>
-</div>
 <hr>
 <div class="container">{% for category, articles in categories | sort %}
   <h4 class="text-center mt-3">{{ category }}</h4>
