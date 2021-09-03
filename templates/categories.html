@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Categories{% endblock %}
+
+{% block content %}
+    <div class="container">
+    {% for category, articles in categories | sort %}
+    <div class="row">
+      <h5>{{ category }}</h5>
+    </div>
+    <div class="row">
+      <ul>
+        {% for article in articles %}
+        <li>
+          <span class="text-monospace">{{ article.locale_date }}</span> <a href="{{ SITEURL }}/{{ article.url }}" class="text-decoration-none"">{{ article.title }}</a> <span class="text-muted">{{ article.summary.strip("<p>/") }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

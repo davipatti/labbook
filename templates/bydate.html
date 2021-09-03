@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Pages sorted by date{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+      <ul>
+      {% for article in articles %}
+        <li>
+          <span class="text-monospace">{{ article.locale_date }}</span>
+          {% if article.category == 'ipynb' %}
+            <img src="theme/code-slash.svg" alt="" />
+          {%  endif %}
+          <a href="{{ SITEURL }}/{{ article.url }}" class="text-decoration-none"">{{ article.title }}</a> <span class="text-muted">{{ article.summary.strip("<p>/") }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    </div>
+  </div>
+{% endblock %}

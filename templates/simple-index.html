@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block navclass %}active{%endblock%}
+{% block content %}
+<section id="content" class="content">
+  {% block content_title %}
+  {% endblock %}
+  <div class="row">
+    <ul class="list-unstyled">
+      {% for article in articles_page.object_list %}
+      <li>
+        <span class="text-monospace">{{ article.locale_date }}</span>
+        {% if article.category == 'ipynb' %}
+        <img src="../theme/code-slash.svg" alt="" />
+        {%  endif %}
+        <a href="{{ SITEURL }}/{{ article.url }}" class="text-decoration-none"">{{ article.title }}</a> <span class=" text-muted">{{ article.summary.strip("<p>/") }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% include 'pagination.html' %}
+</section><!-- content -->
+{% endblock content %}

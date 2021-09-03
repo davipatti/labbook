@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }}{% endblock %}
+{% block content %}
+<div class="container">
+  <p>Lab book for David J. Pattinson<br><a href="mailto:david.pattinson@wisc.edu">david.pattinson@wisc.edu</a></p>
+  <address>
+    Influenza Research Institute<br>
+    575 Science Dr.<br>
+    Madison, WI<br>
+  </address>
+</div>
+<hr>
+<div class="container">{% for category, articles in categories | sort %}
+  <h4 class="text-center mt-3">{{ category }}</h4>
+  <div class="row">{% for article in articles %}
+    <dt class="col-sm-2 mb-0 font-weight-light">{{ article.locale_date }}</dt>
+    <dd class="col-sm-10">
+      {% if article.category == 'ipynb' %}<img src="theme/code-slash.svg" alt="Code slash" />{% endif %}
+      <a href="{{ SITEURL }}/{{ article.url }}" class="text-decoration-none">{{ article.title }}</a>
+      <span class="text-muted">{{ article.summary.strip("<p>/") }}</span>
+    </dd>{% endfor %}
+  </div>
+  <hr>{% endfor %}
+</div>{% endblock %}
