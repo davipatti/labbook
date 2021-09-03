@@ -22,8 +22,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="navbar collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
 
         {% for title, link in MENUITEMS %}
         <li class="nav-item">
@@ -31,22 +31,25 @@
         </li>
         {% endfor %}
 
+        {% if DISPLAY_CATEGORIES_ON_MENU %}
+        {% for cat, null in categories %}
+        <li{% if cat == category %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+          <a href="{{ SITEURL }}/{{ cat.url }}" class="nav-link">{{ cat }}</a>
+        </li>
+        {% endfor %}
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a href="{{ SITEURL }}/everything.html" class="nav-link">By date</a>
+        </li>
         {% if DISPLAY_PAGES_ON_MENU %}
         {% for p in pages %}
         <li{% if p == page %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
           <a href="{{ SITEURL }}/{{ p.url }}" class="nav-link">{{ p.title }}</a>
-          </li>
-          {% endfor %}
-          {% endif %}
-
-          {% if DISPLAY_CATEGORIES_ON_MENU %}
-          {% for cat, null in categories %}
-          <li{% if cat == category %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-            <a href="{{ SITEURL }}/{{ cat.url }}" class="nav-link">{{ cat }}</a>
-            </li>
-            {% endfor %}
-            {% endif %}
-
+        </li>
+        {% endfor %}
+        {% endif %}
       </ul>
     </div>
   </nav><!-- /#menu -->
