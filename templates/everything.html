@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block title %}{{ SITENAME }} - Everything {% endblock %}
-
 {% block content %}
 <h1>Everything <small>sorted by date</small></h1>
 <div class="container">
@@ -9,7 +7,9 @@
         <ul>
             {% for article in dates %}
             <li>
-                <span class="text-monospace">{{ article.locale_date }}</span> <a href="{{ SITEURL }}/{{ article.url }}" class="text-decoration-none"">{{ article.title }}</a> <span class=" text-muted">{{ article.summary.strip("<p>/") }}</span>
+                <span class="text-monospace">{{ article.locale_date }}</span> <a href="{{ SITEURL }}/{{ article.url }}"
+                    class="text-decoration-none"">{{ article.title }}</a> <span class=" text-muted index-summary">{{
+                    article.summary }}</span>
             </li>
             {% endfor %}
         </ul>
